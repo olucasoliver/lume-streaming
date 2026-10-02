@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUME</title>
+<style>
+:root{--bg:#090b12;--panel:#111522;--panel2:#171b2a;--text:#f7f8fb;--muted:#9aa3b6;--g:linear-gradient(135deg,#29a8ff 0%,#7b55ff 52%,#ff4fb8 100%);--line:#24293a}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 50% -20%,#17213b 0,#090b12 45%);color:var(--text);font:15px Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;min-height:100vh}button,input,select{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}
+.hidden{display:none!important}.screen{min-height:100vh}.center{display:grid;place-items:center;padding:24px}.brand{font-weight:900;letter-spacing:-2px;font-size:78px;line-height:1;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.auth{width:min(430px,100%);display:grid;gap:24px;text-align:center}.authbox{background:rgba(17,21,34,.92);border:1px solid var(--line);border-radius:22px;padding:28px;display:grid;gap:14px}.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:#0d101a;padding:5px;border-radius:12px}.tabs button{border:0;background:none;color:var(--muted);padding:11px;border-radius:9px}.tabs .on{background:var(--g);color:#fff}.field{display:grid;gap:7px;text-align:left}.field label{color:var(--muted);font-size:13px}.field input{width:100%;padding:13px 14px;border:1px solid var(--line);background:#0c0f18;color:#fff;border-radius:12px;outline:none}.primary{border:0;border-radius:12px;padding:13px 16px;color:#fff;background:var(--g);font-weight:800}.secondary{border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:#111522;color:#fff}.tiny{font-size:12px;color:var(--muted)}
+header{position:sticky;top:0;z-index:20;background:rgba(9,11,18,.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.04)}.nav{max-width:1280px;margin:auto;padding:15px 24px;display:flex;align-items:center;gap:28px}.navlogo{font-size:29px;font-weight:900;letter-spacing:-1.5px;background:var(--g);-webkit-background-clip:text;color:transparent}.nav a{color:#b8bfd0}.nav a.active,.nav a:hover{color:#fff}.spacer{flex:1}.avatar{width:36px;height:36px;border-radius:50%;background:var(--g);border:0;color:#fff;font-weight:800}.menu{position:relative}.dropdown{position:absolute;right:0;top:46px;width:200px;background:#111522;border:1px solid var(--line);border-radius:14px;padding:7px;box-shadow:0 15px 40px #0008}.dropdown button{width:100%;text-align:left;background:none;color:#fff;border:0;padding:11px;border-radius:9px}.dropdown button:hover{background:#1b2030}
+main{max-width:1280px;margin:auto;padding:24px}.hero{min-height:390px;border-radius:24px;overflow:hidden;position:relative;background:linear-gradient(90deg,#05070c 0%,rgba(5,7,12,.88) 44%,rgba(5,7,12,.2) 100%),linear-gradient(0deg,#05070c 0%,transparent 45%),url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1800&q=80') center/cover}.hero .inner{max-width:580px;padding:68px}.eyebrow{color:#7ed2ff;font-weight:800;text-transform:uppercase;font-size:12px;letter-spacing:.12em}.hero h1{font-size:54px;line-height:.98;margin:12px 0}.hero p{color:#c1c8d6;line-height:1.55}.rowhead{display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px}.rowhead h2{font-size:19px;margin:0}.cards{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(165px,1fr);gap:14px;overflow:auto;padding-bottom:6px}.card{min-width:165px;background:#101421;border:1px solid var(--line);border-radius:14px;overflow:hidden}.poster{aspect-ratio:2/3;background:var(--g);display:grid;place-items:end;padding:10px;font-weight:900}.poster span{width:100%;padding:8px;border-radius:8px;background:#0a0d14aa}.cardbody{padding:10px}.title{font-weight:750}.meta{color:var(--muted);font-size:12px;margin-top:5px}.progress{height:4px;background:#2a3041;margin:9px 0 0}.progress i{display:block;height:100%;background:var(--g)}
+.view{display:none}.view.on{display:block}.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}.chip{border:1px solid var(--line);color:#cbd2df;background:#111522;border-radius:999px;padding:8px 11px}.chip.on{background:var(--g);color:#fff;border-color:transparent}.grid{display:grid;grid-template-columns:repeat(6,1fr);gap:15px}.detail{min-height:520px;padding:10px 0}.detailbox{display:grid;grid-template-columns:280px 1fr;gap:28px;align-items:start}.detailposter{aspect-ratio:2/3;border-radius:18px;background:var(--g);display:grid;place-items:end;padding:16px;font-size:22px;font-weight:900}.detail h1{font-size:46px;line-height:1;margin:0 0 10px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.player{background:#000;border-radius:18px;overflow:hidden;min-height:470px;position:relative;display:grid;place-items:center}.player .fake{font-size:110px;color:#222}.controls{position:absolute;left:0;right:0;bottom:0;padding:16px;background:linear-gradient(transparent,#000)}.bar{height:5px;background:#383b45;border-radius:99px}.bar i{display:block;width:36%;height:100%;background:var(--g);border-radius:99px}.controlsrow{display:flex;gap:12px;align-items:center;margin-top:12px}.controls button{background:none;border:0;color:#fff}.settings{max-width:760px;margin:auto}.setting{padding:18px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:20px}.danger{color:#ff6c8f}.profiles{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:700px;width:100%}.profile{padding:30px;border:1px solid var(--line);background:#111522;border-radius:18px;text-align:center}.profile .avatarbig{width:80px;height:80px;border-radius:50%;margin:0 auto 12px;background:var(--g);display:grid;place-items:center;font-weight:900;font-size:30px}
+@media(max-width:900px){.grid{grid-template-columns:repeat(4,1fr)}.detailbox{grid-template-columns:200px 1fr}.hero .inner{padding:44px}.hero h1{font-size:42px}.nav{padding:13px 15px;gap:14px}.nav a{display:none}.nav a:nth-of-type(1),.nav a:nth-of-type(2),.nav a:nth-of-type(3){display:inline}.cards{grid-auto-columns:160px}}
+@media(max-width:620px){main{padding:15px 14px}.brand{font-size:62px}.authbox{padding:22px}.hero{min-height:430px}.hero .inner{padding:30px 22px}.hero h1{font-size:35px;margin-top:9px}.grid{grid-template-columns:repeat(2,1fr)}.detailbox{grid-template-columns:1fr}.detailposter{max-width:260px}.profiles{grid-template-columns:1fr}.navlogo{font-size:25px}.nav{justify-content:center}.nav .spacer{display:none}.menu{position:absolute;right:14px}}
+</style>
+</head>
+<body>
+<div id="auth" class="screen center">
+  <section class="auth">
+    <div class="brand">LUME</div>
+    <div class="authbox">
+      <div class="tabs"><button id="tabLogin" class="on" onclick="showAuth('login')">Entrar</button><button id="tabSignup" onclick="showAuth('signup')">Criar conta</button></div>
+      <form id="loginForm" onsubmit="enter(event)">
+        <div class="field"><label>E-mail</label><input type="email" value="teste@lume.app" required></div>
+        <div class="field"><label>Senha</label><input type="password" value="123456" required></div>
+        <button class="primary">Entrar</button>
+      </form>
+      <form id="signupForm" class="hidden" onsubmit="enter(event)">
+        <div class="field"><label>Nome</label><input required></div>
+        <div class="field"><label>E-mail</label><input type="email" required></div>
+        <div class="field"><label>Senha</label><input type="password" required></div>
+        <button class="primary">Criar conta</button>
+      </form>
+      <div class="tiny">Protótipo de testes</div>
+    </div>
+  </section>
+</div>
+
+<div id="profilePick" class="screen center hidden">
+  <section class="auth">
+    <div class="brand">LUME</div>
+    <h2>Quem está assistindo?</h2>
+    <div class="profiles">
+      <button class="profile" onclick="pickProfile('Principal')"><div class="avatarbig">P</div><strong>Principal</strong></button>
+      <button class="profile" onclick="pickProfile('Perfil 2')"><div class="avatarbig">2</div><strong>Perfil 2</strong></button>
+      <button class="profile" onclick="pickProfile('Infantil')"><div class="avatarbig">I</div><strong>Infantil</strong></button>
+    </div>
+  </section>
+</div>
+
+<div id="app" class="hidden">
+<header><div class="nav">
+  <a class="navlogo" href="#" onclick="go('home');return false">LUME</a>
+  <a data-nav="home" href="#" onclick="go('home');return false">Início</a>
+  <a data-nav="movies" href="#" onclick="go('movies');return false">Filmes</a>
+  <a data-nav="series" href="#" onclick="go('series');return false">Séries</a>
+  <a data-nav="explore" href="#" onclick="go('explore');return false">Explorar</a>
+  <a data-nav="list" href="#" onclick="go('list');return false">Minha Lista</a>
+  <div class="spacer"></div>
+  <div class="menu"><button class="avatar" onclick="toggleMenu()">P</button><div id="dropdown" class="dropdown hidden">
+    <button onclick="switchProfile()">Trocar perfil</button><button onclick="go('settings')">Configurações do perfil</button><button onclick="go('account')">Minha conta</button><button onclick="logout()">Sair</button>
+  </div></div>
+</div></header>
+
+<main>
+<section id="home" class="view on">
+  <div class="hero"><div class="inner"><div class="eyebrow">Em destaque</div><h1>Entre a Luz</h1><p>Uma história de escolhas, encontros e recomeços.</p><div class="actions"><button class="primary" onclick="openTitle('Entre a Luz','Drama','2025')">▶ Assistir</button><button class="secondary" onclick="toggleList('Entre a Luz')">＋ Minha Lista</button></div></div></div>
+  <div id="continueSec"></div>
+  <Row title="Obras Brasileiras" filter="br"></Row>
+  <Row title="Em Alta" filter="hot"></Row>
+  <Row title="Novidades" filter="new"></Row>
+</section>
+
+<section id="movies" class="view"><h1>Filmes</h1><div class="toolbar"><button class="chip on" onclick="filterType('movies',this)">Todos</button><button class="chip" onclick="filterGenre('Drama',this)">Drama</button><button class="chip" onclick="filterGenre('Comédia',this)">Comédia</button><button class="chip" onclick="filterGenre('Ação',this)">Ação</button></div><div id="moviesGrid" class="grid"></div></section>
+<section id="series" class="view"><h1>Séries</h1><div id="seriesGrid" class="grid"></div></section>
+<section id="explore" class="view"><h1>Explorar</h1><div class="toolbar"><button class="chip on" onclick="exploreFilter('all',this)">Todos</button><button class="chip" onclick="exploreFilter('Documentário',this)">Documentários</button><button class="chip" onclick="exploreFilter('Curta',this)">Curtas</button><button class="chip" onclick="exploreFilter('br',this)">Obras brasileiras</button></div><div id="exploreGrid" class="grid"></div></section>
+<section id="list" class="view"><h1>Minha Lista</h1><div id="listGrid" class="grid"></div></section>
+<section id="title" class="view"></section>
+<section id="watch" class="view"><div class="player"><div class="fake">▶</div><div class="controls"><div class="bar"><i></i></div><div class="controlsrow"><button onclick="alert('Reprodução simulada')">▶</button><button onclick="alert('Legendas: Português')">CC</button><span class="spacer"></span><button onclick="alert('Áudio: Português')">⚙</button><button onclick="document.documentElement.requestFullscreen?.()">⛶</button></div></div></div><h2 id="watchTitle">Assistindo</h2></section>
+<section id="settings" class="view settings"><h1>Configurações do perfil</h1><div class="setting"><span>Nome do perfil</span><strong id="profileName">Principal</strong></div><div class="setting"><span>Idioma de áudio</span><select><option>Português</option><option>Original</option></select></div><div class="setting"><span>Legendas</span><select><option>Ligadas</option><option>Desligadas</option></select></div><div class="setting"><span>Reprodução automática</span><input type="checkbox" checked></div><div class="setting"><span>Histórico</span><button class="secondary" onclick="alert('Histórico limpo no protótipo')">Limpar histórico</button></div><div class="setting"><span>PIN do perfil</span><button class="secondary" onclick="alert('Tela de PIN simulada')">Gerenciar PIN</button></div></section>
+<section id="account" class="view settings"><h1>Minha conta</h1><div class="setting"><span>E-mail</span><strong>teste@lume.app</strong></div><div class="setting"><span>Senha</span><button class="secondary">Alterar senha</button></div><div class="setting"><span>Perfis</span><button class="secondary" onclick="switchProfile()">Gerenciar perfis</button></div><div class="setting"><span>Segurança</span><button class="secondary">Sair de todos os dispositivos</button></div><div class="setting"><span>Privacidade</span><button class="secondary">Política de privacidade</button></div><div class="setting"><span>Conta</span><button class="secondary danger" onclick="alert('Exclusão simulada')">Excluir conta</button></div></section>
+</main>
+</div>
+
+<script>
+const data=[
+ {t:'Entre a Luz',type:'Filme',g:'Drama',year:2025,br:true,hot:true,new:true,progress:36},
+ {t:'Última Chamada',type:'Filme',g:'Comédia',year:2025,br:true,hot:true,new:true},
+ {t:'Depois da Chuva',type:'Filme',g:'Drama',year:2024,br:true,new:true},
+ {t:'Linha de Fuga',type:'Filme',g:'Ação',year:2024},
+ {t:'Cidade Invisível',type:'Série',g:'Mistério',year:2025,br:true,hot:true},
+ {t:'O Segundo Sol',type:'Série',g:'Drama',year:2024,br:true,new:true},
+ {t:'Pequenos Gigantes',type:'Série',g:'Infantil',year:2025,child:true,new:true},
+ {t:'Aventuras do Quintal',type:'Filme',g:'Infantil',year:2025,child:true,br:true},
+ {t:'Planeta Azul',type:'Documentário',g:'Documentário',year:2024},
+ {t:'Pelas Águas',type:'Documentário',g:'Documentário',year:2025,br:true},
+ {t:'Dois Minutos',type:'Curta',g:'Drama',year:2025,br:true},
+ {t:'O Vizinho',type:'Curta',g:'Comédia',year:2024}
+];
+let profile='Principal', liked=new Set(['Entre a Luz']), currentType='all';
+
+function showAuth(mode){loginForm.classList.toggle('hidden',mode!=='login');signupForm.classList.toggle('hidden',mode!=='signup');tabLogin.classList.toggle('on',mode==='login');tabSignup.classList.toggle('on',mode==='signup')}
+function enter(e){e.preventDefault();auth.classList.add('hidden');profilePick.classList.remove('hidden')}
+function pickProfile(p){profile=p;profilePick.classList.add('hidden');app.classList.remove('hidden');render();go('home')}
+function switchProfile(){dropdown.classList.add('hidden');app.classList.add('hidden');profilePick.classList.remove('hidden')}
+function logout(){location.reload()}
+function toggleMenu(){dropdown.classList.toggle('hidden')}
+function allowed(x){return profile!=='Infantil' ? true : !!x.child}
+function render(){profileName.textContent=profile;continueSec.innerHTML='';if(profile!=='Infantil'){const c=data.filter(x=>x.progress&&allowed(x));if(c.length){continueSec.innerHTML='<div class="rowhead"><h2>Continue assistindo</h2></div><div class="cards">'+c.map(card).join('')+'</div>'}};moviesGrid.innerHTML=data.filter(x=>x.type==='Filme'&&allowed(x)).map(card).join('');seriesGrid.innerHTML=data.filter(x=>x.type==='Série'&&allowed(x)).map(card).join('');exploreGrid.innerHTML=data.filter(allowed).map(card).join('');listGrid.innerHTML=[...liked].map(t=>data.find(x=>x.t===t)).filter(Boolean).filter(allowed).map(card).join('');document.querySelectorAll('Row').forEach(()=>{})}
+function card(x){return '<button class="card" onclick="openTitle(\''+x.t.replace(/'/g,"\\'")+'\',\''+x.g+'\',\''+x.year+'\')"><div class="poster"><span>'+x.t+'</span></div><div class="cardbody"><div class="title">'+x.t+'</div><div class="meta">'+x.g+' • '+x.year+'</div>'+((x.progress&&!(!x.progress))?'<div class="progress"><i style="width:'+x.progress+'%"></i></div>':'')+'</div></button>'}
+function openTitle(t,g,y){const x=data.find(a=>a.t===t)||{t,g,year:y};title.innerHTML='<div class="detail"><div class="detailbox"><div class="detailposter">'+t+'</div><div><div class="eyebrow">'+x.type+'</div><h1>'+t+'</h1><div class="meta">'+y+' • '+g+'</div><p style="max-width:680px;color:#c1c8d6;line-height:1.6">Sinopse demonstrativa para testar a experiência do LUME.</p><div class="actions"><button class="primary" onclick="watch(\''+t.replace(/'/g,"\\'")+'\')">▶ Assistir</button><button class="secondary" onclick="toggleList(\''+t.replace(/'/g,"\\'")+'\')">＋ Minha Lista</button></div><div class="meta">Direção • Elenco • Idiomas • Legendas</div></div></div></div>';go('title')}
+function watch(t){watchTitle.textContent='Assistindo: '+t;go('watch')}
+function toggleList(t){liked.has(t)?liked.delete(t):liked.add(t);render();alert(liked.has(t)?'Adicionado à Minha Lista':'Removido da Minha Lista')}
+function go(id){document.querySelectorAll('.view').forEach(v=>v.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('[data-nav]').forEach(a=>a.classList.toggle('active',a.dataset.nav===id));window.scrollTo({top:0,behavior:'smooth'});dropdown.classList.add('hidden')}
+function filterGenre(g,b){document.querySelectorAll('#movies + .chip').forEach(()=>{});moviesGrid.innerHTML=data.filter(x=>x.type==='Filme'&&x.g===g&&allowed(x)).map(card).join('');document.querySelectorAll('#movies .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+function filterType(t,b){moviesGrid.innerHTML=data.filter(x=>x.type==='Filme'&&allowed(x)).map(card).join('');document.querySelectorAll('#movies .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+function exploreFilter(f,b){let arr=data.filter(allowed);if(f==='br')arr=arr.filter(x=>x.br);else if(f!=='all')arr=arr.filter(x=>x.type==='Documentário'||x.type==='Curta');exploreGrid.innerHTML=arr.map(card).join('');document.querySelectorAll('#explore .chip').forEach(x=>x.classList.remove('on'));b.classList.add('on')}
+class Row extends HTMLElement{}
+customElements.define('Row',Row);
+render();
+</script>
+</body>
+</html>
