@@ -1,0 +1,23 @@
+name: Teste do LUME
+
+on:
+  push:
+    branches: [main, test]
+  pull_request:
+    branches: [main]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar código
+        uses: actions/checkout@v4
+
+      - name: Validar estrutura
+        run: |
+          test -f index.html
+          grep -qi '<!doctype html>' index.html
+          grep -qi '<html' index.html
+          grep -qi '</html>' index.html
+          grep -qi 'LUME' index.html
+          echo "Estrutura básica do LUME OK"
